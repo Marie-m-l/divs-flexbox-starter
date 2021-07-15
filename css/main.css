@@ -95,9 +95,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+   /***GENERAL****/
 
 html {
-  background-color: #fff;
+  background-color: lightblue;
   height: 100%;
 }
 
@@ -110,23 +111,34 @@ body {
 
 .flex-wrapper {
   /*add display:flex and set justify-content to space-between*/
+  align-items: center;
+  border: rgb(8, 0, 5) solid 10px;
   display: flex;
-  font-weight: 700;
+  font-weight: 515;
   justify-content: space-between;
 }
 
-.div-1, .div-2, .div-3 {
-  /*give the divs a width of 30%, add display:flex, set justify-content and align-items to center*/
+.flex-item {
   align-items: center;
+  border: black solid 6px;
   color: #fff;
   display: flex;
   line-height: 1.5em;
   font-size: 1.6em;
   background-color: #f16059;
-  height: 300px;
-  justify-content: center;
-  width: 30%;
+  height: 100%;
+  justify-content: space-between;
+  
 }
+
+/**** DIV GRID FLEX DISPLAY ****/
+
+/**look into why I am not able to get #div-1 and #div-2 to stretch to the same size as the #div-3. 
+
+Have tried the flex align property in mant variations but, to no avail.
+
+Come back and fix later  **/
+
 
 
 
@@ -145,7 +157,7 @@ body {
 
 /*
  * Hide only visually, but have it available for screen readers:
- * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ * http://snook.ca/archives/html_and_css/hiding-itemsalign-items-for-accessibility
  */
 
 .visuallyhidden {
@@ -188,7 +200,7 @@ body {
  *
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
+ *    `content editable` attribute is included anywhere else in the document.
  *    Otherwise it causes space to appear at the top and bottom of elements
  *    that receive the `clearfix` class.
  * 2. The use of `table` rather than `block` is only necessary if using
@@ -204,6 +216,41 @@ body {
 .clearfix:after {
     clear: both;
 }
+
+
+/****MEDIA SCREENS ****/
+@media screen and (max-width: 767px) {
+    .flex-wrapper, .flex-item {
+        flex-flow: column wrap;
+        width: fit-content;
+    }
+}
+
+@media  screen and (min-width: 768px) and (max-width: 1024px) {
+    html {
+        background: pink;
+    }
+    .flex-wrapper, .flex-item {
+        flex-flow: column wrap;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    html {
+      background: lightblue;
+      width: fit-content;  
+    }
+    div.flex-item {
+        width: 30%;
+    }
+
+    .flex-wrapper .flex-item{
+        align-items: stretch;
+    }
+}
+
+
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
@@ -223,6 +270,7 @@ body {
    Inlined to avoid the additional HTTP request:
    http://www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
+
 
 @media print {
     *,
